@@ -61,10 +61,25 @@ def sendMsj():
         print ("IA: " + response.text)
         sendMsj()
 
-#Incompleta
-def mostrarChats(id):
-    print('Elija un chat')
-    sql.execute(f'SELECT name FROM ')
+#Completa
+def seleccionDeChat():
+    sql.execute('SELECT DISTINCT idChat, name FROM chats INNER JOIN usuarios ON idUser = 3')
+    datos = sql.fetchall()
+
+    print("Estos son tus chats:")
+    for i in range(len(datos)):
+        y = list(datos[i])
+        y.append(i+1)
+        datos[i] = tuple(y)
+        print("Chat:",datos[i][2],"| Nombre:",datos[i][1])
+    
+    print("Seleccione su chat (Si escribe el nombre, escribalo identicamente porfavor):")
+    opcion = input('>')
+    try:
+        return int(opcion)
+    except:
+        return opcion
+
 
 #Completa
 def login():

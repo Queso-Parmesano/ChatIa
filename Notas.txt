@@ -1,0 +1,47 @@
+Chat con Ia
+- Poder intercambiar msj con la IA
+- Guardar la charla en uan DB (Con el respectivo nombre de quien mando el mensaje)
+- Poder ver la charla y tener el mismo contexto del chat
+- Al intentar cargar un chat, debe tener uan contrasenia y se debe pedir para cargar el chat
+
+
+
+
+
+
+
+- Consulta para el ingreso del nombre y contrasenia del chat
+// INSERT INTO chats (NameChat, passw) values ("<ChatName>","<Password>")
+
+- Consulta para el ingreso del mensaje del usuario
+// INSERT INTO mensajes (msjUser, msjIa) values ("<msjUser>", "<msjIa>")
+
+- DB
+
+create database chatia;
+use chatia;
+
+create table usuarios(
+id int(11) auto_increment,
+username varchar(49),
+passw varchar(25),
+primary key(id)
+);
+
+create table chats(
+idChat int(11) auto_increment,
+idUser int(11),
+primary key(idChat),
+foreign key(idChat) references usuarios(id)
+);
+
+create table mensajes(
+idChat int(11),
+msjUser varchar(9999),
+msjIa text(19999)
+);
+
+falta
+-crear chat
+-mostrar los chats disponibles
+-cargar mensajes
